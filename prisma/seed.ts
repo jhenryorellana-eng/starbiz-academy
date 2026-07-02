@@ -31,6 +31,7 @@ async function main() {
   await prisma.observatoryPost.deleteMany();
   await prisma.chapter.deleteMany();
   await prisma.country.deleteMany();
+  await prisma.product.deleteMany();
   await prisma.user.deleteMany();
 
   console.log("Seeding users…");
@@ -395,6 +396,106 @@ async function main() {
         body: "Los conceptos clave del libro aplicados al momento exacto en que un CEO Junior cobra su primera venta: qué hacer con ese dinero.",
         category: "FINANCIAL",
         publishedAt: at(-1),
+      },
+    ],
+  });
+
+  console.log("Seeding store products…");
+  await prisma.product.createMany({
+    data: [
+      {
+        name: "Family Pass",
+        slug: "family-pass",
+        tagline: "Un solo pase. Toda la familia.",
+        description:
+          "Acceso completo a CEO Junior + Padres 3.0 bajo una sola suscripción. Padre e hijo crecen juntos.",
+        category: "SERVICE",
+        status: "AVAILABLE",
+        price: "Suscripción mensual",
+        icon: "⭐",
+        featured: true,
+        position: 0,
+      },
+      {
+        name: "App StarVoice",
+        slug: "app-starvoice",
+        tagline: "Combustible diario en tu bolsillo",
+        description:
+          "Audios, historias y relatos para empezar el día con propósito y guía moral. Nuevo contenido cada mañana.",
+        category: "APP",
+        status: "AVAILABLE",
+        price: "Incluido en Family Pass",
+        icon: "🎧",
+        position: 1,
+      },
+      {
+        name: "App StarBooks",
+        slug: "app-starbooks",
+        tagline: "Mentalidad acelerada, libro a libro",
+        description:
+          "Micro-resúmenes de desarrollo personal en lenguaje Gen Z. Cortos, potentes y listos para aplicar.",
+        category: "APP",
+        status: "BETA",
+        price: "Incluido en Family Pass",
+        icon: "📚",
+        position: 2,
+      },
+      {
+        name: "App StarEmpresa",
+        slug: "app-starempresa",
+        tagline: "El diferencial Harvard",
+        description:
+          "Análisis de empresas reales (Amazon, Tesla, Apple) con la metodología del caso. Pensamiento empresarial de élite desde los 14.",
+        category: "APP",
+        status: "COMING_SOON",
+        icon: "🚀",
+        position: 3,
+      },
+      {
+        name: "App StarEduca",
+        slug: "app-stareduca",
+        tagline: "La fábrica de recursos",
+        description:
+          "Formación técnica para crear y vender productos digitales. Ingresos reales desde jóvenes.",
+        category: "APP",
+        status: "COMING_SOON",
+        icon: "🛠️",
+        position: 4,
+      },
+      {
+        name: "English Pre-U",
+        slug: "english-pre-u",
+        tagline: "El puente global",
+        description:
+          "Programa de inglés con propósito académico y estándar universitario internacional, para el adolescente y para la familia (English Together).",
+        category: "SERVICE",
+        status: "AVAILABLE",
+        price: "Consultar",
+        icon: "🌎",
+        position: 5,
+      },
+      {
+        name: "Conferencias de Henry Orellana",
+        slug: "conferencias-henry",
+        tagline: "Henry en el escenario",
+        description:
+          "Padres 3.0, CEO Junior y Liderazgo Transformacional: conferencias que transforman, desde auditorios corporativos hasta comunidades latinas.",
+        category: "SERVICE",
+        status: "AVAILABLE",
+        price: "Consultar agenda",
+        icon: "🎤",
+        position: 6,
+      },
+      {
+        name: "Mentoría GÉNESIS i7™",
+        slug: "mentoria-genesis-i7",
+        tagline: "Acompañamiento de cohorte",
+        description:
+          "Mentores certificados guían a cada cohorte por las 7 inteligencias durante 7 semanas, con seguimiento en la Torre de Control.",
+        category: "SERVICE",
+        status: "COMING_SOON",
+        icon: "🧭",
+        position: 7,
       },
     ],
   });

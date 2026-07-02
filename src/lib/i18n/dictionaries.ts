@@ -32,6 +32,7 @@ export const es = {
   nav: {
     community: "Comunidad",
     genesis: "GÉNESIS i7™",
+    store: "Tienda",
     enterCommunity: "Entrar a la Comunidad",
   },
   landing: {
@@ -147,6 +148,22 @@ export const es = {
       empty: "Aún no hay cohortes.",
     },
   },
+  store: {
+    kicker: "La Tienda Starbiz",
+    title: "Servicios y aplicaciones",
+    lead: "Todo lo que estamos construyendo para el ecosistema familiar: las apps de CEO Junior y Padres 3.0, y los servicios que los acompañan.",
+    featured: "Destacado",
+    apps: "Aplicaciones",
+    services: "Servicios",
+    available: "Disponible",
+    beta: "Beta",
+    comingSoon: "Próximamente",
+    cta: "Lo quiero",
+    ctaSoon: "Avísame cuando salga",
+    ctaInfo: "Más información",
+    empty: "Aún no hay productos publicados. Vuelve pronto.",
+    note: "¿Dudas? Escríbenos por WhatsApp y te contamos cómo empezar.",
+  },
   auth: {
     loginTitle: "Bienvenido de vuelta",
     loginSubtitle: "Entra a tu comunidad.",
@@ -209,6 +226,7 @@ export const en: typeof es = {
   nav: {
     community: "Community",
     genesis: "GÉNESIS i7™",
+    store: "Store",
     enterCommunity: "Enter the Community",
   },
   landing: {
@@ -323,6 +341,22 @@ export const en: typeof es = {
       cohort: "students",
       empty: "No cohorts yet.",
     },
+  },
+  store: {
+    kicker: "The Starbiz Store",
+    title: "Services and applications",
+    lead: "Everything we are building for the family ecosystem: the CEO Junior and Padres 3.0 apps, and the services around them.",
+    featured: "Featured",
+    apps: "Applications",
+    services: "Services",
+    available: "Available",
+    beta: "Beta",
+    comingSoon: "Coming soon",
+    cta: "I want it",
+    ctaSoon: "Notify me at launch",
+    ctaInfo: "Learn more",
+    empty: "No products published yet. Check back soon.",
+    note: "Questions? Message us on WhatsApp and we'll help you get started.",
   },
   auth: {
     loginTitle: "Welcome back",

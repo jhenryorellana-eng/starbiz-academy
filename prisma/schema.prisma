@@ -223,6 +223,29 @@ model Chapter {
   @@index([countryId])
 }
 
+// ----------------------------------------------------------------------------
+// Store: catalog of the apps & services we are building
+// category: APP | SERVICE
+// status: AVAILABLE | BETA | COMING_SOON
+// ----------------------------------------------------------------------------
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  tagline     String
+  description String
+  category    String   @default("APP")
+  status      String   @default("COMING_SOON")
+  price       String? // "Gratis", "$9/mes" — kept as string, placeholders
+  url         String? // external link; when null the CTA opens WhatsApp
+  icon        String? // emoji shown on the card
+  featured    Boolean  @default(false)
+  position    Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  @@index([position])
+}
+
 model ChapterUpdate {
   id        String   @id @default(cuid())
   chapterId String

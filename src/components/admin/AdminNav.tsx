@@ -11,6 +11,7 @@ const ITEMS: Array<[string, string]> = [
   ["/admin/chapters", "Cohortes"],
   ["/admin/observatory", "StarBooks"],
   ["/admin/posts", "Publicaciones"],
+  ["/admin/store", "Tienda"],
 ];
 
 export function AdminNav() {

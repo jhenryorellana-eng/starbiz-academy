@@ -172,6 +172,37 @@ export async function createChapterUpdate(fd: FormData) {
   revalidatePath("/admin/chapters");
 }
 
+/* ---------------- Store (apps & services) ---------------- */
+export async function createProduct(fd: FormData) {
+  await requireAdmin();
+  const name = str(fd, "name");
+  if (!name) return;
+  await prisma.product.create({
+    data: {
+      name,
+      slug: slugify(name),
+      tagline: str(fd, "tagline"),
+      description: str(fd, "description"),
+      category: str(fd, "category") || "APP",
+      status: str(fd, "status") || "COMING_SOON",
+      price: str(fd, "price") || null,
+      url: str(fd, "url") || null,
+      icon: str(fd, "icon") || null,
+      featured: fd.get("featured") === "on",
+      position: Number(str(fd, "position")) || 0,
+    },
+  });
+  revalidatePath("/admin/store");
+  revalidatePath("/store");
+}
+
+export async function deleteProduct(fd: FormData) {
+  await requireAdmin();
+  await prisma.product.delete({ where: { id: str(fd, "id") } });
+  revalidatePath("/admin/store");
+  revalidatePath("/store");
+}
+
 /* ---------------- Posts (moderation) ---------------- */
 export async function deletePost(fd: FormData) {
   await requireAdmin();
