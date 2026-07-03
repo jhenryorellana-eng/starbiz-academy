@@ -31,7 +31,7 @@ cp .env.example .env        # completa DATABASE_URL / DIRECT_URL / JWT_SECRET
 npm run dev                 # http://localhost:3000
 ```
 
-La base de producción (Supabase, proyecto `starbiz-academy`) ya tiene el esquema y los datos demo aplicados. Para una base nueva: `npx prisma db push && npm run db:seed`.
+La base de producción (Supabase, proyecto `pduqjkdoxocdrbhounen`) ya tiene el esquema y los datos demo aplicados. Para una base nueva: `npx prisma db push && npm run db:seed`.
 
 Scripts útiles: `npm run typecheck`, `npm run db:reset` (resetea el esquema; re-siembra con `npm run db:seed`).
 
@@ -75,7 +75,7 @@ Español es el idioma por defecto. Todas las cadenas de UI viven en `src/lib/i18
 
 ## Base de datos (Supabase)
 
-Proyecto: **starbiz-academy** (ref `qrgwkordkmnqsaekcxgf`, us-east-1). El esquema está aplicado con **RLS habilitado** en todas las tablas (la app conecta vía Prisma con el rol de Postgres; la Data API pública queda cerrada). Las cadenas de conexión salen del dashboard: **Connect → ORMs → Prisma**.
+Proyecto: **pduqjkdoxocdrbhounen** (https://pduqjkdoxocdrbhounen.supabase.co, sa-east-1). El esquema está aplicado con **RLS habilitado** en todas las tablas (la app conecta vía Prisma con el rol de Postgres; la Data API pública queda cerrada). Las cadenas de conexión salen del dashboard: **Connect → ORMs → Prisma**.
 
 ## Deploy en Vercel
 
