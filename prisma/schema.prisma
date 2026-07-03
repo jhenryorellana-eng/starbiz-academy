@@ -1,14 +1,15 @@
-// StarbizAcademy — Prisma schema (SQLite local; migrable a Postgres/Supabase)
+// StarbizAcademy — Prisma schema (PostgreSQL / Supabase)
 // Enum-like fields are Strings with documented allowed values; lists are JSON
-// strings (no native enums/Json so the SQLite→Postgres migration stays clean).
+// strings (kept that way so the schema stays portable — no native enums/Json).
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL") // pooled (pgbouncer) — used by the app at runtime
+  directUrl = env("DIRECT_URL")   // direct connection — used by prisma db push/migrate
 }
 
 // ----------------------------------------------------------------------------

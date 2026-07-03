@@ -15,7 +15,7 @@ Marca: **navy profundo (#1a2744) + cyan + estrella dorada**, sobre blanco cálid
 |------|-----------|
 | Framework | **Next.js 16** (App Router) + **React 19** |
 | Estilos | **Tailwind CSS v4** (CSS-first, tokens de marca en `globals.css`) |
-| Base de datos | **Prisma 6 + SQLite** (archivo local, migrable a Postgres/Supabase) |
+| Base de datos | **Prisma 6 + PostgreSQL (Supabase)** |
 | Auth | JWT propio en cookie httpOnly (`jose`) + `bcryptjs`, roles |
 | Mutaciones | Route Handlers (`/api/**`) + **Server Actions** (admin) |
 | i18n | Diccionario ES/EN, toggle con cookie (`es` por defecto) |
@@ -27,10 +27,11 @@ Requisitos: Node.js ≥ 18.18 (probado en 22).
 
 ```bash
 npm install
-npx prisma db push          # crea la base SQLite (dev.db)
-npm run db:seed             # carga datos de demo (Cohorte Provo, eventos, StarVoice, etc.)
+cp .env.example .env        # completa DATABASE_URL / DIRECT_URL / JWT_SECRET
 npm run dev                 # http://localhost:3000
 ```
+
+La base de producción (Supabase, proyecto `starbiz-academy`) ya tiene el esquema y los datos demo aplicados. Para una base nueva: `npx prisma db push && npm run db:seed`.
 
 Scripts útiles: `npm run typecheck`, `npm run db:reset` (resetea el esquema; re-siembra con `npm run db:seed`).
 
@@ -72,15 +73,9 @@ Una por semana, en este orden: **i1 Espiritual · i2 Mental · i3 Física · i4 
 
 Español es el idioma por defecto. Todas las cadenas de UI viven en `src/lib/i18n/dictionaries.ts` (`es` / `en`); el toggle ES/EN guarda la preferencia en cookie y el servidor re-renderiza.
 
-## Migrar a Postgres/Supabase (producción)
+## Base de datos (Supabase)
 
-El esquema evita enums nativos y JSON para que la migración sea directa:
-
-1. En `prisma/schema.prisma` cambiar `provider = "sqlite"` por `postgresql` y agregar `directUrl = env("DIRECT_URL")`.
-2. Definir `DATABASE_URL` (pooled, puerto 6543 + `?pgbouncer=true&connection_limit=1`) y `DIRECT_URL` (directa, puerto 5432) en `.env`.
-3. `npx prisma migrate dev` (o `db push`) y `npm run db:seed`.
-4. Configurar `JWT_SECRET`, `ADMIN_EMAIL` y `ADMIN_PASSWORD` en el entorno de producción.
-5. En Supabase, habilitar RLS en todas las tablas (la app conecta vía Prisma con el rol de Postgres, así que RLS sin políticas bloquea la Data API pública sin afectar la app).
+Proyecto: **starbiz-academy** (ref `qrgwkordkmnqsaekcxgf`, us-east-1). El esquema está aplicado con **RLS habilitado** en todas las tablas (la app conecta vía Prisma con el rol de Postgres; la Data API pública queda cerrada). Las cadenas de conexión salen del dashboard: **Connect → ORMs → Prisma**.
 
 ## Deploy en Vercel
 
